@@ -1,0 +1,12 @@
+
+<ul id='links'>
+  <% @links.each do |link| %>
+    <li>
+      <a href= <%= link.url  %>><%= link.title %> </a>
+    </li>
+  <% end %>
+</ul>
+
+<form action='/links/new' method='get'>
+  <input type='submit' name='submit' value="Submit new link">
+</form>
