@@ -16,8 +16,9 @@
 
 ENV['RACK_TEST'] = 'test'
 
-require 'simplecov'
-SimpleCov.start
+# require 'simplecov'
+# SimpleCov.start
+require 'link'
 require 'capybara/rspec'
 require 'capybara'
 require 'rspec'

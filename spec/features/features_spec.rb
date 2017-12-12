@@ -1,4 +1,4 @@
-
+require 'link'
 
 feature "Viewing Links" do
 
