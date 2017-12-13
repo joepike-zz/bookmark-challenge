@@ -23,7 +23,7 @@ feature "adding links to bookmark manager" do
     within 'ul#links' do
       expect(page).to have_content("Google")
     end
-
   end
+
 
 end
