@@ -14,7 +14,7 @@
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
-ENV['RACK_TEST'] = 'test'
+ENV['RACK_ENV'] = 'test'
 
 # require 'simplecov'
 # SimpleCov.start
