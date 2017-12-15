@@ -23,8 +23,6 @@ feature "adding links to bookmark manager" do
 
     expect(current_path).to eq '/links'
 
-    save_and_open_page
-
     # within 'ul#links' do
       expect(page).to have_content("News")
     # end

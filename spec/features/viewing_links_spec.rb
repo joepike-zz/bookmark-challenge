@@ -12,11 +12,11 @@ feature "Viewing links" do
 
     visit('/links')
 
-    
-
-    # expect(page).to have_content("bubbles")
-    # expect(page).not_to have_content("education")
-    # expect(page).not_to have_content("search")
+    within 'ul#links' do
+      expect(page).to have_content("bubbles")
+      expect(page).not_to have_content("education")
+      expect(page).not_to have_content("search")
+    end
   end
 
 end

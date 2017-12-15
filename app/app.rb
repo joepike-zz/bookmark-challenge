@@ -12,7 +12,14 @@ class BookmarkManager < Sinatra::Base
 
   attr_reader :search_results
 
-  enable :sessions
+  enable :session_secret, 'very secret'
+
+  helpers do
+    def current_user
+      @current_user ||= User.find_by_id(session[:user_name])
+    end
+  end
+  # helper_method :current_user
 
   get ('/') do
     redirect('/signup')
@@ -28,6 +35,16 @@ class BookmarkManager < Sinatra::Base
     erb(:links)
   end
 
+  post '/tag' do
+    redirect "/tags/#{params[:tag_search]}"
+  end
+
+  get '/tags/:name' do
+    tag = Tag.first(name: params[:name])
+    @links = tag ? tag.links : []
+    erb(:links)
+  end
+
   get '/links/new' do
     # @link.title = params[:title]
     # @link.url = params[:url]
@@ -36,19 +53,20 @@ class BookmarkManager < Sinatra::Base
 
   post '/links' do
     @user_name = session[:user_name]
+    p @user_name
     if @user_name == nil
       session[:user_name] = params[:user_name]
       redirect '/links'
     else
-    link = Link.new(url: params[:url], title: params[:title])
-    tag = Tag.first_or_create(name: params[:tags])
-    link.tags << tag
-    link.save
+      link = Link.new(url: params[:url], title: params[:title])
+      tag = Tag.first_or_create(name: params[:tags])
+      link.tags << tag
+      link.save
 
-    User.create(email: params[:email], params[:password])
-
-    redirect '/links'
-  end
+      user = User.create(email: params[:email], password: params[:password])
+      p user
+      redirect '/links'
+    end
   end
 
   # post '/search' do
