@@ -2,6 +2,8 @@
 # require './app/app'
 # Capybara.app = BookmarkManager
 
+require 'pry'
+
 feature "adding links to bookmark manager" do
 
   scenario "add new link" do
@@ -10,19 +12,22 @@ feature "adding links to bookmark manager" do
   end
 
   scenario "add a link by title" do
-    visit('/links')
+    signup
     click_button 'Submit new link'
 
     fill_in 'url', with: "https://www.google.com"
     fill_in 'title', with: "Google"
+    fill_in 'tags', with: "News"
 
     click_button 'save'
 
     expect(current_path).to eq '/links'
 
-    within 'ul#links' do
-      expect(page).to have_content("Google")
-    end
+    save_and_open_page
+
+    # within 'ul#links' do
+      expect(page).to have_content("News")
+    # end
   end
 
 

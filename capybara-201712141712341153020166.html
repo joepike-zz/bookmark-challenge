@@ -1,14 +1,14 @@
-<h2>Welcome <%= @user_name %> </h2>
+<h2>Welcome Joe </h2>
 <ul id='links'>
-  <% @links.each do |link| %>
+  
     <li>
-      <a> <%= link.title %> </a>
-      <a href= <%= link.url %>><%= link.url %></a>
-      <% link.tags.each do |tag|%>
-      <p> <%=tag.name %> </p>
-      <% end %>
+      <a> Google </a>
+      <a href= https://www.google.com>https://www.google.com</a>
+      
+      <p> News </p>
+      
     </li>
-  <% end %>
+  
 </ul>
 
 <form action='/search' method='post'>

@@ -5,6 +5,6 @@ class Tag
   property :id, Serial
   property :name, String
 
-  belongs_to :link, required: false
+  # belongs_to :link, through => Resource
 
 end

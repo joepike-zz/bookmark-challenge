@@ -12,7 +12,6 @@ class Link
   property :title, String
   property :url, String
 
-
   # def self.tag_link(link_url, link_title, tag_name, tag_class: Tag)
   #   @tag = tag_class.create(tag: tag_name)
   #   p @tag
